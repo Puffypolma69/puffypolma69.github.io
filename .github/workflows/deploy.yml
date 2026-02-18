@@ -2,7 +2,7 @@ name: Deploy Vite Site
 
 on:
   push:
-    branches: [master] # Triggers when you push to the master branch
+    branches: [master]
 
 permissions:
   contents: read
@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,7 +37,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This MUST match the outDir in your vite.config.ts
           path: "./dist"
 
       - name: Deploy to GitHub Pages
