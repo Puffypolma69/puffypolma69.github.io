@@ -1,6 +1,6 @@
 
   {
-      "name": "IPT Checklist",
+      "name": "ipt-checklist",
       "version": "0.1.0",
       "private": true,
       "dependencies": {
